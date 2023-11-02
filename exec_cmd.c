@@ -12,7 +12,7 @@ void exec_cmd(const char *command)
 	 * and the pid_t function assigns the process to the
 	 * data type
 	 */
-	if (child_pid < 0)
+	if (child_pid < -1)
 	{
 		perror("fork");
 		exit(EXIT_FAILURE);
@@ -21,7 +21,7 @@ void exec_cmd(const char *command)
 	{
 		args[0] = (char *)command;
 
-		if (execve(command, args, NULL) < 0)
+		if (execve(command, args, NULL) < -1)
 		{
 			_printf("./shell: NO such file or directory\n");
 			exit(EXIT_FAILURE);
