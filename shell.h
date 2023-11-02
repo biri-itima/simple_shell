@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
+#include <stdbool.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #define MAX_CMD_LENGTH 100
 
 void _printf(const char *msg);

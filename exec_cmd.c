@@ -6,7 +6,7 @@
  */
 void exec_cmd(const char *command)
 {
-	const char *args[] = {NULL, NULL};
+	char *args[] = {NULL, NULL};
 	pid_t child_pid = fork();
 	/** The fork function was used to create the process
 	 * and the pid_t function assigns the process to the
@@ -19,7 +19,7 @@ void exec_cmd(const char *command)
 	}
 	else if (child_pid == 0)
 	{
-		args[0] = command;
+		args[0] = (char *)command;
 
 		if (execve(command, args, NULL) < 0)
 		{

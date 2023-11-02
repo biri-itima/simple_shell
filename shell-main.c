@@ -11,8 +11,8 @@ int main(void)
 	while (1)
 	{
 		shell_prompt();
-		exec_cmd();
-		cmd_check();
+		cmd_check(command, sizeof(command));
+		exec_cmd(command);
 	}
 	return (0);
 }
