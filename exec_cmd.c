@@ -2,33 +2,35 @@
 
 /**
  * exec_cmd - executing our commands
- * @command: command to be executed
+ * @arg: command to be executed
+ * @path: path to be executed
  */
-void exec_cmd(const char *command)
+
+void exec_cmd(char *path, char *arg[])
 {
-	char *args[] = {NULL, NULL};
 	pid_t child_pid = fork();
+	int status;
+
 	/** The fork function was used to create the process
 	 * and the pid_t function assigns the process to the
 	 * data type
 	 */
-	if (child_pid < -1)
+
+	if (child_pid < 0)
 	{
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
 	else if (child_pid == 0)
 	{
-		args[0] = (char *)command;
-
-		if (execve(command, args, NULL) < -1)
+		if (execve(path, arg, NULL) == -1)
 		{
-			_printf("./shell: NO such file or directory\n");
+			perror("execve");
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		wait(NULL);
+		wait(&status);
 	}
 }

@@ -2,22 +2,29 @@
 /**
  * cmd_check - checks for command in user input
  * @command: Command input
- * @size: size
+ * Return: pointer to the command
  */
-void cmd_check(char *command, size_t size)
+char *cmd_check(char *command)
 {
-	if (fgets(command, size, stdin) == NULL)
+	ssize_t get_num;
+	size_t size = 0;
+
+	get_num = getline(&command, &size, stdin);
+	if (get_num <= 0)
 	{
 		if (feof(stdin))
 		{
-			_printf("\n");
+			_printf("Exit\n");
+			free(command);
 			exit(EXIT_SUCCESS);
 		}
-		else
-		{
-			_printf("Error while reading input.\n");
-			exit(EXIT_FAILURE);
-		}
+	}
+	else if (get_num == -1)
+	{
+		perror("Error");
+		free(command);
+		exit(EXIT_FAILURE);
 	}
 	command[strcspn(command, "\n")] = '\0';
+	return (command);
 }

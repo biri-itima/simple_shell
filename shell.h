@@ -12,6 +12,9 @@
 
 void _printf(const char *msg);
 void shell_prompt(void);
-void exec_cmd(const char *command);
-void cmd_check(char *command, size_t size);
+void exec_cmd(char *path, char *arg[]);
+char *cmd_check(char *command);
+char *location(char *path, char *arg);
+char *get_loc(char *arg);
+
 #endif
