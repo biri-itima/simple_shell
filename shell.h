@@ -16,5 +16,6 @@ void exec_cmd(char *path, char *arg[]);
 char *cmd_check(char *command);
 char *location(char *path, char *arg);
 char *get_loc(char *arg);
+int built_in_cmd(char **arg);
 
 #endif

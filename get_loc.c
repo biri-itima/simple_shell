@@ -49,7 +49,9 @@ char *location(char *path, char *arg)
 }
 
 /**
-
+ * get_loc - gets the enviromental variable PATH
+ * @arg: stores the user command
+ * Return: command's full PATH
 */
 
 char *get_loc(char *arg)
