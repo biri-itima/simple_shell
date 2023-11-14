@@ -11,6 +11,8 @@
 #include <sys/wait.h>
 #define MAX_CMD_LENGTH 100
 
+extern char **environ;
+
 void _printf(const char *msg);
 void shell_prompt(void);
 void exec_cmd(char *path, char *arg[]);
