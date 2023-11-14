@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <stdbool.h>
@@ -17,5 +18,5 @@ char *cmd_check(char *command);
 char *location(char *path, char *arg);
 char *get_loc(char *arg);
 int built_in_cmd(char **arg);
-
+void for_env(void);
 #endif

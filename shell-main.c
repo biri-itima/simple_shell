@@ -26,13 +26,18 @@ int main(void)
 
 		if (path == NULL)
 		{
-			if (built_in_cmd(arg) != 0)
+			if (built_in_cmd(arg) < 0)
 				_printf("command not found\n");
 			continue;
 		}
 		else
 		{
 			exec_cmd(path, arg);
+		}
+		if (strcmp(arg[0], "env") == 0)
+		{
+			for_env();
+			continue;
 		}
 	}
 	free(command);

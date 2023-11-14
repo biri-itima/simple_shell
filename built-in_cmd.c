@@ -1,4 +1,6 @@
-#include"shell.h"
+#include "shell.h"
+#include <unistd.h>
+
 /**
  * built_in_cmd - prints the built in command
  * @arg: user command
