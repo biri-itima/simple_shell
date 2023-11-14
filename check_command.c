@@ -10,16 +10,8 @@ char *cmd_check(char *command)
 	size_t size = 0;
 
 	get_num = getline(&command, &size, stdin);
-	if (get_num == 0)
-	{
-		if (feof(stdin))
-		{
-			_printf("\n");
-			/*free(command);*/
-			exit(EXIT_SUCCESS);
-		}
-	}
-	else if (get_num == -1)
+			
+	if (get_num == -1)
 	{
 		_printf("Exit\n\n\n[Disconnected...]\n");
 		free(command);

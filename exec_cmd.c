@@ -26,6 +26,7 @@ void exec_cmd(char *path, char *arg[])
 		if (execve(path, arg, NULL) == -1)
 		{
 			perror("execve");
+			/*_printf("command not found");*/
 			exit(EXIT_FAILURE);
 		}
 	}

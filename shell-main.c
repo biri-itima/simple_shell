@@ -27,7 +27,8 @@ int main(void)
 		if (path == NULL)
 		{
 			if (built_in_cmd(arg) != 0)
-				_printf("command not found\n");
+				perror("Error");
+			perror("Error");
 			continue;
 		}
 		else
