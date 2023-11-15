@@ -15,7 +15,6 @@ int built_in_cmd(char **arg)
 	{
 		if (arg[1] == NULL)
 		{
-		
 			_printf("Exit\n\n\n[Disconnected...]\n");
 			exit(0);
 		}
