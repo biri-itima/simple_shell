@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * shell_prompt - shell prompt (our_shell$)
- *
+ * display_prompt - display shell prompt
  */
-void shell_prompt(void)
+
+void display_prompt(void)
 {
-	_printf("our_shell$ ");
+	_print("our shell$ ");
+	fflush(stdout);
 }

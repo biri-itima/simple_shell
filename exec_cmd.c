@@ -1,38 +1,33 @@
 #include "shell.h"
 
 /**
- * exec_cmd - executing our commands
- * @arg: command to be executed
- * @path: path to be executed
+ * exec_cmd - execute command line
+ * @command: command line
  */
 
-void exec_cmd(char *path, char *arg[])
+void exec_cmd(char *command)
 {
-	pid_t child_pid = fork();
+	pid_t pid = fork();
 	int status;
+	char *args[2];
 
-	/**
-	 * The fork function was used to create the process
-	 * and the pid_t function assigns the process to the
-	 * data type
-	 */
-
-	if (child_pid < 0)
+	if (pid == -1)
 	{
-		_printf("fork");
-		exit(EXIT_FAILURE);
+		perror("fork");
 	}
-	else if (child_pid == 0)
+	else if (pid == 0)
 	{
-		if (execve(path, arg, NULL) < 0)
+		/*child pid*/
+		args[0] = command;
+		args[1] = NULL;
+		if (execve(command, args, NULL) < 0)
 		{
 			perror("execve");
-			_printf("command not found");
 			exit(EXIT_FAILURE);
 		}
 	}
 	else
 	{
-		wait(&status);
+		waitpid(pid, &status, 0);
 	}
 }
