@@ -27,7 +27,7 @@ int main(void)
 				exit(EXIT_FAILURE);
 			}
 		}
-		command[strcspn(command,"\n")] = '\0';
+		command[strcspn(command, "\n")] = '\0';
 
 		exec_cmd(command);
 	}
